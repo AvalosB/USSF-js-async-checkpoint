@@ -9,10 +9,14 @@ const doTheThing = (err, data) => {
     pokemonList = data.toString().split("\n");
 
     for(let pokemon of pokemonList){
-        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`).then(
             response => response.json()
         ).then(
             data => console.log((data.forms[0].name),  ' is a ' , getTypesAsString(data) + ' type')
+        ).catch(
+            function(errorMsg){
+                console.log(`${pokemon} not found.`);
+            }
         );
     }
 }
