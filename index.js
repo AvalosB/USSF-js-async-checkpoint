@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 var pokemonList = [];
+const inputFile = process.argv[2];
 
 const doTheThing = (err, data) => {
     if (err) throw err;
@@ -16,13 +17,8 @@ const doTheThing = (err, data) => {
     }
 }
 
-fs.readFile('input.txt', doTheThing);
 
-
-//node index.js input.txt
-//node index.js myPokemon.txt
-//node index.js ionsPokemons.txt
-
+fs.readFile(inputFile, doTheThing);
 
 
 function getTypesAsString(data){
